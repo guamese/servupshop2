@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-form-field>
+    <input matInput [(ngModel)]="answer" placeholder="What service are you looking for?">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="zip" placeholder="Enter Zipe Code">
+  </mat-form-field>
+
+  <br>
+  
+  <button mat-raised-button (click)="showAnswer()">Search</button>
+  <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+</mat-card>
+
+
+<mat-card *ngIf="answerDisplay">
+  <h1>{{ answerDisplay }}, you're damn right.</h1>
+</mat-card>
