@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+
+interface Post {
+  title: string;
+  content: string;
+}
 
 @Component({
   selector: 'app-main',
@@ -7,22 +15,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  answer: string = '';
-  answerDisplay: string = '';
+  postsCol: AngularFirestoreCollection<Post>;
+  posts: Observable<Post[]>;
+
+  description: string = '';
+  resultDisplay: string = '';
   showSpinner: boolean = false;
 
-  showAnswer() {
+  showResults() {
     this.showSpinner = true;
+    this.resultDisplay = '';
 
     setTimeout(() => {
-      this.answerDisplay = this.answer;
+      this.resultDisplay = this.description;
       this.showSpinner = false;
     }, 2000);
   }
 
-  constructor() { }
+  constructor(private afs: AngularFirestore) { }
 
   ngOnInit() {
+    this.postsCol = this.afs.collection('posts');
+    this.posts = this.postsCol.valueChanges();
   }
 
   

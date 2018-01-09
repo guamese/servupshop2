@@ -1,19 +1,27 @@
 <mat-card>
+
+  <h1>Find a service near you</h1>
   <mat-form-field>
-    <input matInput [(ngModel)]="answer" placeholder="What service are you looking for?">
+    <input matInput [(ngModel)]="description" placeholder="Keywords...">
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput [(ngModel)]="zip" placeholder="Enter Zipe Code">
+    <input matInput [(ngModel)]="zip" placeholder="City or Zip Code">
   </mat-form-field>
 
   <br>
   
-  <button mat-raised-button (click)="showAnswer()">Search</button>
+  <button mat-raised-button (click)="showResults()">Search</button>
   <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
 </mat-card>
 
 
-<mat-card *ngIf="answerDisplay">
-  <h1>{{ answerDisplay }}, you're damn right.</h1>
+<mat-card *ngIf="resultDisplay">
+    <ul *ngFor="let post of posts | async">
+        <li>
+          <strong>{{ post.title}}</strong>
+          <br>
+          {{post.content}}
+        </li>
+      </ul>
 </mat-card>
