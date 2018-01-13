@@ -9,11 +9,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
-import { ResultsComponent } from './results/results.component';
-import { PostingComponent } from './posting/posting.component';
-import { NewuserComponent } from './newuser/newuser.component';
-import { NewposterComponent } from './newposter/newposter.component';
-import { SettingsComponent } from './settings/settings.component';
+import { TopbarComponent } from './topbar/topbar.component';
 
 var config = {
   apiKey: "AIzaSyAY4NhhA6pyoQwaK0IqaNL_BOkpXmdNXrU",
@@ -26,11 +22,6 @@ var config = {
 
 const appRoutes: Routes = [
   { path: 'main', component: MainComponent },
-  { path: 'newposter', component: NewposterComponent },
-  { path: 'newuser', component: NewuserComponent },
-  { path: 'posting', component: NewposterComponent },
-  { path: 'results', component: ResultsComponent },
-  { path: 'settings', component: SettingsComponent },
   { path: '',
     redirectTo: '/main',
     pathMatch: 'full'
@@ -42,11 +33,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     MainComponent,
-    ResultsComponent,
-    PostingComponent,
-    NewuserComponent,
-    NewposterComponent,
-    SettingsComponent
+    TopbarComponent
   ],
   imports: [
     BrowserModule,
